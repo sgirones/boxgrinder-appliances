@@ -12,6 +12,8 @@ pre-start script
     export RUBYOPT="-d"
 end script
     
+console output
+
 script
     apt-get update
     service ntp stop
