@@ -11,5 +11,11 @@ pre-start script
     test -x /usr/local/bin/abiquo-chef-run || { stop; exit 0; }
     export RUBYOPT="-d"
 end script
-    
-exec /usr/local/bin/abiquo-chef-run 
+
+script
+    apt-get update
+    service ntp stop
+    /usr/sbin/ntpdate pool.ntp.org
+    service ntp start
+    /usr/local/bin/abiquo-chef-run
+end script
